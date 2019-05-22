@@ -9,6 +9,7 @@ LABEL image=compose
 ENV PATH /google-cloud-sdk/bin/:$PATH
 
 FROM compose AS final
+RUN apk add --update bash
 COPY --from=docker   /usr/local/bin/docker-entrypoint.sh     /usr/local/bin/docker-entrypoint.sh
 COPY --from=docker   /usr/local/bin/docker                   /usr/local/bin/docker
 ENTRYPOINT ["sh", "/usr/local/bin/docker-entrypoint.sh"]
