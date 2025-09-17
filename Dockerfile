@@ -3,10 +3,10 @@ FROM docker:latest AS docker
 LABEL image=docker
 
 # Docker Compose is our base
-FROM docker/compose:1.24.0 AS compose
+FROM docker/compose:latest AS compose
 LABEL image=compose
 
-ENV PATH /google-cloud-sdk/bin/:$PATH
+ENV PATH=/google-cloud-sdk/bin/:$PATH
 
 FROM compose AS final
 RUN apk add --update bash git curl openssl make ca-certificates \
